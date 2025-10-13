@@ -40,7 +40,7 @@ Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQL
 
 In your **module-level** build.gradle.kts file:
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   dependencies {      // Core calendar component      implementation("com.anonymous:xlinearcalendar:1.0.0")      // If you need kotlinx-datetime support (recommended for modern Kotlin date handling)      implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")  }   `
+```dependencies {      // Core calendar component      implementation("com.anonymous:xlinearcalendar:1.0.0")      // If you need kotlinx-datetime support (recommended for modern Kotlin date handling)      implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")  }   ```
 
 🚀 Usage Examples
 -----------------
