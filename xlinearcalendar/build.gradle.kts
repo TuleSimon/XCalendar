@@ -9,11 +9,7 @@ plugins {
     alias(libs.plugins.dokka)
 }
 
-// Explicitly load properties from local.properties and environment variables for custom GPR credentials.
-val gprUser: String = project.findProperty("signing.user")?.toString() ?: System.getenv("GITHUB_ACTOR")
-val gprToken: String = project.findProperty("signing.token")?.toString() ?: System.getenv("GITHUB_TOKEN")
 
-// Load local.properties
 val localProps = Properties()
 val localPropertiesFile = rootProject.file("local.properties")
 if (localPropertiesFile.exists()) {
@@ -154,7 +150,7 @@ afterEvaluate {
                     scm {
                         connection.set("scm:git:git://github.com/TuleSimon/XCalendar.git")
                         developerConnection.set("scm:git:ssh://github.com/TuleSimon/XCalendar.git")
-                        url.set("https://github.com/TuleSimon/XCalendar")
+                        url.set("https://github.com/tuleSimon/XCalendar")
                     }
                 }
             }
@@ -164,8 +160,8 @@ afterEvaluate {
                 name = "GitHubPackages"
                 url = uri("https://maven.pkg.github.com/TuleSimon/XCalendar")
                 credentials {
-                    username = gprUser ?: throw GradleException("GitHub token missing")
-                    password = gprToken ?: throw GradleException("GitHub token missing")
+                    username =  localProps.getProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                    password =  localProps.getProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
                 }
             }
         }
