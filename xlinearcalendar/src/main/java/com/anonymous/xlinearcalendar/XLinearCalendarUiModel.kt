@@ -4,7 +4,7 @@ import com.anonymous.xlinearcalendar.extensions.now
 import kotlinx.datetime.LocalDate
 
 /**
- * Ui model for the RowKalendar.
+ * Ui model for the XCalendar.
  *
  * @param isLoading Boolean to indicate if the calendar is loading more dates.
  * @param dates List of [LocalDate] to display in the calendar.
