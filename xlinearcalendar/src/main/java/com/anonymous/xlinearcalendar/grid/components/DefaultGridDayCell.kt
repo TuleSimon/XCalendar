@@ -84,6 +84,7 @@ fun DefaultGridDayCell(
         isSelected
     }
 
+
     val isPast = date.before(today) && !isSelectedState
     val enabled = isDateEnabled(date)
 

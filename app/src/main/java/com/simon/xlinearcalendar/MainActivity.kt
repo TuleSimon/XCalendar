@@ -12,15 +12,18 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.anonymous.xlinearcalendar.XLinearCalendar
 import com.anonymous.xlinearcalendar.components.DateCell
+import com.anonymous.xlinearcalendar.components.DateCellDefaults
 import com.anonymous.xlinearcalendar.grid.XLinearGridCalendar
 import com.anonymous.xlinearcalendar.grid.components.DefaultGridDayCell
 import com.anonymous.xlinearcalendar.grid.components.DefaultGridMonthCell
 import com.anonymous.xlinearcalendar.utils.rememberXLinearCalendarState
 import com.simon.xlinearcalendar.ui.theme.XLinearCalendarTheme
+import com.simon.xlinearcalendar.ui.theme.selected
 import java.util.Date
 
 class MainActivity : ComponentActivity() {
@@ -48,7 +51,7 @@ fun Sample() {
         Date(2025 - 1900, 9, 11),
         Date(2025 - 1900, 9, 12)
     )
-    Column {
+    Column(Modifier.padding(horizontal = 16.dp)) {
         XLinearCalendar(
             modifier = Modifier.height(100.dp),
             initialDates = customDates,
@@ -57,6 +60,10 @@ fun Sample() {
             content = { date, isSelected, onClick ->
                 DateCell(
                     date = date,
+                    colors = DateCellDefaults.colors().copy(
+                        selectedContainerColor = selected,
+                        selectedTextColor = Color.White
+                    ),
                     isSelected = isSelected,
                     onDateSelected = onClick,
                     modifier = Modifier.padding(6.dp)
@@ -81,6 +88,10 @@ fun Sample() {
                 DefaultGridDayCell(
                     date = date,
                     isSelected = isSelected,
+                    colors = DateCellDefaults.colors().copy(
+                        selectedContainerColor = selected,
+                        selectedTextColor = Color.White
+                    ),
                     onDateSelected = onClick,
                     modifier = Modifier.padding(6.dp)
                 )
@@ -101,6 +112,10 @@ fun BoundedCalendarExample() {
         content = { date, isSelected, onClick ->
             DateCell(
                 date = date,
+                colors = DateCellDefaults.colors().copy(
+                    selectedContainerColor = selected,
+                    selectedTextColor = Color.White
+                ),
                 isSelected = isSelected,
                 onDateSelected = onClick,
                 modifier = Modifier.padding(4.dp)
