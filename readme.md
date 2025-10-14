@@ -1,5 +1,4 @@
-# XCalendar [![Maven Central](https://img.shields.io/maven-central/v/io.github.chouaibmo/rowkalendar.svg?color=blue)](https://search.maven.org/artifact/io.github.chouaibmo/rowkalendar)
-
+# XCalendar [![JitPack](https://img.shields.io/jitpack/v/github/TuleSimon/XCalendar.svg?color=blue)](https://jitpack.io/#TuleSimon/XCalendar)
 <p> 
   <img  width="60%" height="40%" src="./screenshots/img.png" alt="cover">
 </p>
