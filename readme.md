@@ -265,10 +265,21 @@ fun BoundedCalendarExample() {
 
 ## State Information
 
+```markdown
+| Component | Lambda Parameter | Description |
+|:---|:---|:---|
+| XLinearCalendar | `content` | Renders the individual date cell in the horizontal list. |
+| XLinearGridCalendar | `monthContent` | Renders the header (the month title) in the grid view. |
+| XLinearGridCalendar | `dayContent` | Renders each day cell in the monthly grid. Date? is null for filler days. |
+
+---
+
+## State Information
+
 | Key | Value | Description |
 |:---|:---|:---|
 | **State Name** | `state: XLinearCalendarState` | Required for programmatic control and state persistence (see `rememberXLinearCalendarState`). |
-
+```
 
 ## 🤝 Contribution
 
