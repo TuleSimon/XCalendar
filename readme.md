@@ -57,8 +57,8 @@ dependencyResolutionManagement {
 In your module-level build.gradle.kts:
 ```kotlin
 dependencies {
-// Core calendar component
-implementation("com.anonymous:xlinearcalendar:1.0.0")
+    // Core calendar component
+    implementation("com.anonymous:xlinearcalendar:1.0.0")
 
     // If using JitPack
     implementation("com.github.TuleSimon:XCalendar:1.0")
@@ -283,7 +283,7 @@ fun BoundedCalendarExample() {
 
 ## 🤝 Contribution
 
-If you wish to contribute, please feel free to submit pull requests or issues to help improve RowKalendar.
+If you wish to contribute, please feel free to submit pull requests or issues to help improve XCalendar.
 
 ## 💙 Find this repository useful?
 If you find this library useful, please consider starring the repository and sharing it with others :star:
