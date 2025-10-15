@@ -1,12 +1,11 @@
-# XCalendar [![JitPack](https://img.shields.io/jitpack/v/github/TuleSimon/XCalendar.svg?color=blue)](https://jitpack.io/#TuleSimon/XCalendar)
+# 🗓XCalendar [![JitPack](https://img.shields.io/jitpack/v/github/TuleSimon/XCalendar.svg?color=blue)](https://jitpack.io/#TuleSimon/XCalendar)
 <p> 
   <img  width="60%" height="40%" src="./screenshots/cover.webp" alt="cover">
 </p>
 
 ## 💡 Description
 
-XCalendar 🗓️
-XCalendar is a simple and customizable calendar library built entirely for Jetpack Compose. It provides straightforward, user-friendly, 
+XCalendar 🗓️ is a simple and customizable calendar library built entirely for Jetpack Compose. It provides straightforward, user-friendly, 
 and horizontally scrollable calendar components perfect for any modern Android application.
 
 We have two components for different usecases, first one is 
