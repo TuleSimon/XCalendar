@@ -64,7 +64,44 @@ fun MyScheduler() {
 
 
 ## ⚙️ Setup
-To integrate XCalendar into your project, add the following dependencies to the gradle file of your application
+To integrate XCalendar into your project, you'll need to add the appropriate repository configuration to your `settings.gradle(.kts)` file and then include the dependency in your module-level `build.gradle(.kts)` file.
+
+## 1. Repository Configuration (settings.gradle or settings.gradle.kts)
+
+### Option A: Using JitPack
+JitPack allows you to use any public GitHub repository as a Maven dependency.
+
+Kotlin DSL (settings.gradle.kts)
+
+```kotlin
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("[https://jitpack.io](https://jitpack.io)") }
+    }
+}
+```
+
+### Groovy DSL (settings.gradle)
+
+```groovy
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url '[https://jitpack.io](https://jitpack.io)' }
+    }
+}
+```
+
+### Option B: Using GitHub Packages (Recommended)
+
+GitHub Packages often requires authentication for reliable access, especially due to rate limiting. You'll need a GitHub Personal Access Token (PAT) with the **`read:packages`** scope, set as an environment variable (`GITHUB_TOKEN`) or a project property (`gpr.token`).
+
+#### Kotlin DSL (`settings.gradle.kts`)
 
 ```kotlin
 dependencyResolutionManagement {
@@ -75,7 +112,7 @@ dependencyResolutionManagement {
         // Add GitHub Packages repository
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/tulesimon/XCalendar")
+            url = uri("[https://maven.pkg.github.com/tulesimon/XCalendar](https://maven.pkg.github.com/tulesimon/XCalendar)")
             credentials {
                 // Ensure your GitHub token (gpr.token) and user (gpr.user) are set
                 username = project.findProperty("gpr.user") as? String ?: System.getenv("GITHUB_ACTOR")
@@ -85,30 +122,47 @@ dependencyResolutionManagement {
     }
 }
 ```
+#### Groovy DSL (settings.gradle)
 
-or if using jitpack
-```kotlin
+```groovy
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        // Add GitHub Packages repository
+        maven {
+            name = "GitHubPackages"
+            url = uri("[https://maven.pkg.github.com/tulesimon/XCalendar](https://maven.pkg.github.com/tulesimon/XCalendar)")
+            credentials {
+                // Ensure your GitHub token (gpr.token) and user (gpr.user) are set
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
 ```
 
-## 2. Add Dependency
+### 2. Add the Dependency (build.gradle or build.gradle.kts)
+   Once the repository is configured, add the dependency to your module's build.gradle file (e.g., app/build.gradle).
+
+Note: The exact Group ID and Artifact ID will depend on the publishing method (GitHub Packages vs. JitPack). Please replace XCALENDAR_VERSION with the latest release version.
+
+Kotlin DSL (build.gradle.kts)
 
 In your module-level build.gradle.kts:
 ```kotlin
 dependencies {
-    // Core calendar component
-    implementation("com.anonymous:xlinearcalendar:1.0.0")
+    // If using Github Packages
+    // Check the exact Group ID/Artifact ID published to GitHub Packages
+    implementation("com.github.tulesimon:xcalendar:XCALENDAR_VERSION")
 
     // If using JitPack
-    implementation("com.github.TuleSimon:XCalendar:1.0")
+    implementation("com.github.tulesimon:XCalendar:XCALENDAR_VERSION")
 }
 ```
+
 
 
 **Note**: XCalendar utilizes the `kotlinx-datetime` library, you don't have to include this, as we only expose the java `Date`.
