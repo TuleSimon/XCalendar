@@ -67,8 +67,7 @@ To integrate XCalendar into your project, you'll need to add the appropriate rep
 
 ## 1. Repository Configuration (settings.gradle or settings.gradle.kts)
 
-### Option A: Using JitPack
-JitPack allows you to use any public GitHub repository as a Maven dependency.
+### Option A: Using JitPack (Recommended)
 
 Kotlin DSL (settings.gradle.kts)
 
@@ -96,7 +95,7 @@ dependencyResolutionManagement {
 }
 ```
 
-### Option B: Using GitHub Packages (Recommended)
+### Option B: Using GitHub Packages
 
 GitHub Packages often requires authentication for reliable access, especially due to rate limiting. You'll need a GitHub Personal Access Token (PAT) with the **`read:packages`** scope, set as an environment variable (`GITHUB_TOKEN`) or a project property (`gpr.token`).
 
@@ -359,24 +358,6 @@ fun BoundedCalendarExample() {
         }
     )
 }
-```
-
-## State Information
-
-```markdown
-| Component | Lambda Parameter | Description |
-|:---|:---|:---|
-| XLinearCalendar | `content` | Renders the individual date cell in the horizontal list. |
-| XLinearGridCalendar | `monthContent` | Renders the header (the month title) in the grid view. |
-| XLinearGridCalendar | `dayContent` | Renders each day cell in the monthly grid. Date? is null for filler days. |
-
----
-
-## State Information
-
-| Key | Value | Description |
-|:---|:---|:---|
-| **State Name** | `state: XLinearCalendarState` | Required for programmatic control and state persistence (see `rememberXLinearCalendarState`). |
 ```
 
 ## 🤝 Contribution
