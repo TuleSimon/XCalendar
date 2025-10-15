@@ -1,14 +1,59 @@
 # XCalendar [![JitPack](https://img.shields.io/jitpack/v/github/TuleSimon/XCalendar.svg?color=blue)](https://jitpack.io/#TuleSimon/XCalendar)
 <p> 
-  <img  width="60%" height="40%" src="./screenshots/img.png" alt="cover">
+  <img  width="60%" height="40%" src="./screenshots/cover.webp" alt="cover">
 </p>
 
 ## 💡 Description
 
-XCalendar is a Androidlibrary designed to offer a straightforward and user-friendly
-scrollable horizontal calendar component for both Android applications, it also provides a Linear Grid Calendar Version also.
+XCalendar 🗓️
+XCalendar is a simple and customizable calendar library built entirely for Jetpack Compose. It provides straightforward, user-friendly, 
+and horizontally scrollable calendar components perfect for any modern Android application.
+
+We have two components for different usecases, first one is 
+
+### ✨ Features
+Built for Compose: A modern, declarative UI library that integrates seamlessly into your Compose projects.
+
+Two Unique Views: Offers both a compact linear date picker and a traditional grid-style calendar.
+
+Easy Integration: Add powerful calendar functionality to your app with just a few lines of code.
+
+Intuitive Navigation: Smooth horizontal scrolling for navigating through dates and months.
+
+User-Friendly: Designed to provide a clean and intuitive experience for the end-user.
 
 
+## 🚀 Components
+
+XCalendar offers two primary composables to fit different use cases.
+
+### 1. `XLinearCalendar()`
+
+This component displays a clean, horizontally scrollable **linear row of dates**. It's perfect for implementing compact date pickers, timelines, or any UI that requires a simple, focused view of consecutive days.
+
+**Use Case**: Ideal for booking apps, habit trackers, or anywhere you need a quick date selection without taking up too much screen space.
+
+```kotlin
+@Composable
+fun MyScreen() {
+    XLinearCalendar(
+        // Add your configuration and state handling here
+    )
+}
+```
+### 2. `XLinearGridCalendar()`
+This component displays a horizontally scrollable list of months. When a month is selected, it presents the dates in a classic grid format. This approach combines easy navigation between months with the familiar structure of a traditional calendar.
+
+Use Case: A great choice for event apps, schedulers, or any application that benefits from a full month-at-a-glance view.
+
+```kotlin
+@Composable
+fun MyScheduler() {
+    XLinearGridCalendar(
+        // Add your configuration and state handling here
+    )
+}
+```
 
 ## 📸 Screenshots
 <p>
