@@ -1,14 +1,58 @@
-# XCalendar [![JitPack](https://img.shields.io/jitpack/v/github/TuleSimon/XCalendar.svg?color=blue)](https://jitpack.io/#TuleSimon/XCalendar)
+# 🗓XCalendar [![JitPack](https://img.shields.io/jitpack/v/github/TuleSimon/XCalendar.svg?color=blue)](https://jitpack.io/#TuleSimon/XCalendar)
 <p> 
-  <img  width="60%" height="40%" src="./screenshots/img.png" alt="cover">
+  <img  width="60%" height="40%" src="./screenshots/cover.webp" alt="cover">
 </p>
 
 ## 💡 Description
 
-XCalendar is a Androidlibrary designed to offer a straightforward and user-friendly
-scrollable horizontal calendar component for both Android applications, it also provides a Linear Grid Calendar Version also.
+XCalendar 🗓️ is a simple and customizable calendar library built entirely for Jetpack Compose. It provides straightforward, user-friendly, 
+and horizontally scrollable calendar components perfect for any modern Android application.
+
+We have two components for different usecases, first one is 
+
+### ✨ Features
+Built for Compose: A modern, declarative UI library that integrates seamlessly into your Compose projects.
+
+Two Unique Views: Offers both a compact linear date picker and a traditional grid-style calendar.
+
+Easy Integration: Add powerful calendar functionality to your app with just a few lines of code.
+
+Intuitive Navigation: Smooth horizontal scrolling for navigating through dates and months.
+
+User-Friendly: Designed to provide a clean and intuitive experience for the end-user.
 
 
+## 🚀 Components
+
+XCalendar offers two primary composables to fit different use cases.
+
+### 1. `XLinearCalendar()`
+
+This component displays a clean, horizontally scrollable **linear row of dates**. It's perfect for implementing compact date pickers, timelines, or any UI that requires a simple, focused view of consecutive days.
+
+**Use Case**: Ideal for booking apps, habit trackers, or anywhere you need a quick date selection without taking up too much screen space.
+
+```kotlin
+@Composable
+fun MyScreen() {
+    XLinearCalendar(
+        // Add your configuration and state handling here
+    )
+}
+```
+### 2. `XLinearGridCalendar()`
+This component displays a horizontally scrollable list of months. When a month is selected, it presents the dates in a classic grid format. This approach combines easy navigation between months with the familiar structure of a traditional calendar.
+
+Use Case: A great choice for event apps, schedulers, or any application that benefits from a full month-at-a-glance view.
+
+```kotlin
+@Composable
+fun MyScheduler() {
+    XLinearGridCalendar(
+        // Add your configuration and state handling here
+    )
+}
+```
 
 ## 📸 Screenshots
 <p>
@@ -19,7 +63,43 @@ scrollable horizontal calendar component for both Android applications, it also 
 
 
 ## ⚙️ Setup
-To integrate XCalendar into your project, add the following dependencies to the gradle file of your application
+To integrate XCalendar into your project, you'll need to add the appropriate repository configuration to your `settings.gradle(.kts)` file and then include the dependency in your module-level `build.gradle(.kts)` file.
+
+## 1. Repository Configuration (settings.gradle or settings.gradle.kts)
+
+### Option A: Using JitPack (Recommended)
+
+Kotlin DSL (settings.gradle.kts)
+
+```kotlin
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("[https://jitpack.io](https://jitpack.io)") }
+    }
+}
+```
+
+### Groovy DSL (settings.gradle)
+
+```groovy
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url '[https://jitpack.io](https://jitpack.io)' }
+    }
+}
+```
+
+### Option B: Using GitHub Packages
+
+GitHub Packages often requires authentication for reliable access, especially due to rate limiting. You'll need a GitHub Personal Access Token (PAT) with the **`read:packages`** scope, set as an environment variable (`GITHUB_TOKEN`) or a project property (`gpr.token`).
+
+#### Kotlin DSL (`settings.gradle.kts`)
 
 ```kotlin
 dependencyResolutionManagement {
@@ -30,7 +110,7 @@ dependencyResolutionManagement {
         // Add GitHub Packages repository
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/tulesimon/XCalendar")
+            url = uri("[https://maven.pkg.github.com/tulesimon/XCalendar](https://maven.pkg.github.com/tulesimon/XCalendar)")
             credentials {
                 // Ensure your GitHub token (gpr.token) and user (gpr.user) are set
                 username = project.findProperty("gpr.user") as? String ?: System.getenv("GITHUB_ACTOR")
@@ -40,30 +120,47 @@ dependencyResolutionManagement {
     }
 }
 ```
+#### Groovy DSL (settings.gradle)
 
-or if using jitpack
-```kotlin
+```groovy
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        // Add GitHub Packages repository
+        maven {
+            name = "GitHubPackages"
+            url = uri("[https://maven.pkg.github.com/tulesimon/XCalendar](https://maven.pkg.github.com/tulesimon/XCalendar)")
+            credentials {
+                // Ensure your GitHub token (gpr.token) and user (gpr.user) are set
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
 ```
 
-## 2. Add Dependency
+### 2. Add the Dependency (build.gradle or build.gradle.kts)
+   Once the repository is configured, add the dependency to your module's build.gradle file (e.g., app/build.gradle).
+
+Note: The exact Group ID and Artifact ID will depend on the publishing method (GitHub Packages vs. JitPack). Please replace XCALENDAR_VERSION with the latest release version.
+
+Kotlin DSL (build.gradle.kts)
 
 In your module-level build.gradle.kts:
 ```kotlin
 dependencies {
-    // Core calendar component
-    implementation("com.anonymous:xlinearcalendar:1.0.0")
+    // If using Github Packages
+    // Check the exact Group ID/Artifact ID published to GitHub Packages
+    implementation("com.github.tulesimon:xcalendar:XCALENDAR_VERSION")
 
     // If using JitPack
-    implementation("com.github.TuleSimon:XCalendar:1.0")
+    implementation("com.github.tulesimon:XCalendar:XCALENDAR_VERSION")
 }
 ```
+
 
 
 **Note**: XCalendar utilizes the `kotlinx-datetime` library, you don't have to include this, as we only expose the java `Date`.
@@ -261,24 +358,6 @@ fun BoundedCalendarExample() {
         }
     )
 }
-```
-
-## State Information
-
-```markdown
-| Component | Lambda Parameter | Description |
-|:---|:---|:---|
-| XLinearCalendar | `content` | Renders the individual date cell in the horizontal list. |
-| XLinearGridCalendar | `monthContent` | Renders the header (the month title) in the grid view. |
-| XLinearGridCalendar | `dayContent` | Renders each day cell in the monthly grid. Date? is null for filler days. |
-
----
-
-## State Information
-
-| Key | Value | Description |
-|:---|:---|:---|
-| **State Name** | `state: XLinearCalendarState` | Required for programmatic control and state persistence (see `rememberXLinearCalendarState`). |
 ```
 
 ## 🤝 Contribution
